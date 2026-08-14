@@ -80,6 +80,20 @@ point, anything easy to confuse with a neighbour, any multi-step interaction,
 and the result the reader should end up looking at. Skip screenshots of typing
 into a plainly-labelled text box.
 
+**Every navigation path gets a picture.** The moment the text says *Settings →
+Approvals*, *Project → Members*, or any other trail through the menus, a
+screenshot of that trail goes beside it. An arrow chain is a set of directions
+the reader has to translate into a screen they may never have opened; a picture
+of the menu with the route marked is something they recognise at a glance. This
+is the most common place a reader stalls, and one capture removes it.
+
+Shoot the menu open at the step being named, with the target marked. Where the
+path runs several levels deep, either mark every level on one capture and number
+the labels in order, or give a capture per level — whichever reads faster. Keep
+the written path in the prose as well: the picture is *in addition to* the
+words, never instead of them, so the document still works when someone searches
+it for "Approvals".
+
 **Every figure must point at something.** A plain screenshot shows the reader
 the page; it does not show them *which* of six similar buttons to press. So each
 one gets a pink box round the target, a labelled tag, and the rest of the page
@@ -211,6 +225,15 @@ work.** The reader is trying to finish a job, not gather evidence, and telling a
 customer "this is a known defect, please note what you saw" is not
 documentation.
 
+**Nothing from the tester's copy reaches the reader.** Not the `Can you do it?`
+boxes, not the defect-confirmation callouts ("this is a known defect, you are
+confirming it, not diagnosing it"), not the *what appeared: ………* blanks, and not
+the internal identifiers that tag them — validation test IDs (`MAN-03`), defect
+tickets (`QM-4`) and matrix references are the test record's vocabulary and mean
+nothing to a customer. Where a document is adapted from a validation how-to,
+strip all of it; a single leftover checkbox tells the reader they were handed
+somebody else's paperwork.
+
 So, in order:
 
 1. **Is there a working route to the same outcome?** Document that one, without
@@ -335,8 +358,9 @@ the UI changes, not edited in place.
 ## Rules
 
 - **This is a customer document.** No `Can you do it?` boxes, no defect
-  confirmations, no "tell us where you struggled", no expected-to-fail footer.
-  If those are wanted, the skill is `/howto`.
+  confirmations, no "tell us where you struggled", no expected-to-fail footer,
+  and no internal identifiers — no test IDs, defect tickets or matrix
+  references. If those are wanted, the skill is `/howto`.
 - **Both files, every time.** A guide is a `.pdf` *and* the `.md` it was built
   from, delivered together with `screenshots/`. Do not ask which format, do not
   ship one alone, and do not treat the PDF as the document and the Markdown as a
@@ -353,6 +377,8 @@ the UI changes, not edited in place.
 - **Screenshots are mandatory**, and from a clean tenant with neutral sample
   data — no DEV banner, no test records, no real colleagues' names. If you
   cannot capture them, say so plainly and ask whether to proceed without.
+- **Every navigation path is shown, not just written.** Any `A → B` trail
+  through the menus gets a screenshot with the route marked, alongside the text.
 - **Never invent a click path.** Every step must come from a screen you drove or
   a document that describes it.
 - **Never document a path that does not work.** Working route, or supported

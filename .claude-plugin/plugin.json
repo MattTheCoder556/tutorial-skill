@@ -1,6 +1,6 @@
 {
   "name": "tutorial",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Turn a feature you have driven, or a module guide, into end-user documentation with annotated screenshots: what the module is for, and how someone doing their job gets each task done. The customer-facing counterpart to the howto skill — same qmsWrapper house style and the same PDF pipeline, but no checkboxes, no defect confirmations and no feedback to send back. Always includes screenshots, annotated to show where to click; always delivers both a PDF in the house style and the Markdown source it was built from.",
   "author": {
     "name": "MattTheCoder556",

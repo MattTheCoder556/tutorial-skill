@@ -90,21 +90,30 @@ a LaTeX article rather than product documentation.
 - **If something does not look right** — symptom, cause, what to do.
 - **Where to go next**, then a footer naming the product version described.
 
-## Three rules the skill will not bend
+## Four rules the skill will not bend
 
-1. **It always includes screenshots, and every one is annotated.** Each figure
+1. **Every navigation path is shown, not just written.** The moment the text
+   says *Settings → Approvals*, a screenshot of that trail goes beside it with
+   the route marked. An arrow chain is directions the reader has to translate
+   into a screen they may never have opened; a picture of the menu is something
+   they recognise at a glance. The written path stays in the prose too, so the
+   document still works when someone searches it for "Approvals".
+2. **It always includes screenshots, and every one is annotated.** Each figure
    carries a pink box and label on the target with the rest of the page dimmed,
    then is cropped to it — so the reader is never left searching a full-window
    capture for the button. If screenshots cannot be captured the skill says so
    and asks, rather than quietly shipping a wall of text.
-2. **It always delivers the PDF and the Markdown together.** The format is not a
+3. **It always delivers the PDF and the Markdown together.** The format is not a
    question; only where the document goes is, and it asks that before writing
    anything. A PDF with no source to regenerate it from is not a deliverable.
-3. **It never documents a path that does not work.** Where the product is
+4. **It never documents a path that does not work.** Where the product is
    broken, the order is: document a working route to the same outcome; failing
    that, document a supported workaround as normal procedure; failing that, drop
    the task and say which one was dropped and why. Telling a customer "this is a
-   known defect, note what you saw" is not documentation.
+   known defect, note what you saw" is not documentation. Nothing from the
+   tester's copy reaches the reader — not the checkboxes, not the
+   defect-confirmation callouts, and not the internal identifiers that tag them
+   (validation test IDs like `MAN-03`, defect tickets like `QM-4`).
 
 Image format is **PNG** and is not offered as a choice: lossless text so small
 labels survive, flat UI colour is PNG's best case (it beats JPEG on size *and*
