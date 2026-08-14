@@ -1,0 +1,26 @@
+{
+  "name": "tutorial-skill",
+  "owner": {
+    "name": "MattTheCoder556",
+    "url": "https://github.com/MattTheCoder556"
+  },
+  "metadata": {
+    "description": "qmsWrapper end-user documentation authoring with annotated screenshots",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "tutorial",
+      "source": "./",
+      "description": "Turn a feature you have driven, or a module guide, into end-user documentation with annotated screenshots: what the module is for, and how someone doing their job gets each task done. The customer-facing counterpart to the howto skill — same qmsWrapper house style and the same PDF pipeline, but no checkboxes, no defect confirmations and no feedback to send back. Always includes screenshots, annotated to show where to click; always delivers both a PDF in the house style and the Markdown source it was built from.",
+      "version": "1.0.0",
+      "author": {
+        "name": "MattTheCoder556",
+        "url": "https://github.com/MattTheCoder556"
+      },
+      "homepage": "https://github.com/MattTheCoder556/tutorial-skill",
+      "repository": "https://github.com/MattTheCoder556/tutorial-skill",
+      "license": "MIT"
+    }
+  ]
+}
