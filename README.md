@@ -46,21 +46,25 @@ tell them how.
 
 ## What it produces
 
-Every run produces **both**, never one or the other:
+Every run produces **all three**, never one instead of another:
 
 - **PDF in the qmsWrapper *Documentation* house style** — logo header, near-black
   headings on white, humanist sans, full-width bordered screenshots
-- **Markdown + a `screenshots/` folder** — the editable source the PDF is built
+- **Self-contained HTML** — the same document for the web, every screenshot
+  inlined as base64, so it opens correctly on its own and can be attached to a
+  ticket or dropped into a knowledge base with no `screenshots/` folder beside it
+- **Markdown + a `screenshots/` folder** — the editable source both are built
   from, and what you edit for the next revision
 
-Word (`.docx`) and single-file HTML are available on request, in addition to
-those two rather than instead of them.
+Word (`.docx`) is available on request, in addition to those three rather than
+instead of them.
 
-Both files are named by the house convention, differing only in extension:
+All three files are named by the house convention, differing only in extension:
 
 ```
 qmsWrapper_<Module>_<YYYY-MM-DD>_<HHMM>_v<N>.<ext>
 qmsWrapper_FormBuilder_2026-08-14_1432_v1.pdf
+qmsWrapper_FormBuilder_2026-08-14_1432_v1.html
 qmsWrapper_FormBuilder_2026-08-14_1432_v1.md
 ```
 
@@ -103,9 +107,10 @@ a LaTeX article rather than product documentation.
    then is cropped to it — so the reader is never left searching a full-window
    capture for the button. If screenshots cannot be captured the skill says so
    and asks, rather than quietly shipping a wall of text.
-3. **It always delivers the PDF and the Markdown together.** The format is not a
-   question; only where the document goes is, and it asks that before writing
-   anything. A PDF with no source to regenerate it from is not a deliverable.
+3. **It always delivers the PDF, the HTML and the Markdown together.** The
+   format is not a question; only where the document goes is, and it asks that
+   before writing anything. A PDF with no source to regenerate it from is not a
+   deliverable, and the HTML is the copy that travels on its own.
 4. **It never documents a path that does not work.** Where the product is
    broken, the order is: document a working route to the same outcome; failing
    that, document a supported workaround as normal procedure; failing that, drop
@@ -142,13 +147,15 @@ python3 scripts/annotate_screenshot.py --spec figures.json
 # 2. crop each annotation down to its target
 python3 scripts/crop_highlights.py --map map.json --out doc/screenshots
 
-# 3. markdown -> styled, self-contained HTML
+# 3. markdown -> styled, self-contained HTML (a deliverable: write it in place)
 python3 scripts/md_to_qmswrapper_html.py \
-        doc/qmsWrapper_FormBuilder_2026-08-14_1432_v1.md /tmp/out.html \
+        doc/qmsWrapper_FormBuilder_2026-08-14_1432_v1.md \
+        doc/qmsWrapper_FormBuilder_2026-08-14_1432_v1.html \
         screenshots assets/qmswrapper-logo.png
 
-# 4. HTML -> PDF via Chrome, same name as the Markdown
-python3 scripts/html_to_pdf_chrome.py /tmp/out.html \
+# 4. HTML -> PDF via Chrome, same name as the other two
+python3 scripts/html_to_pdf_chrome.py \
+        doc/qmsWrapper_FormBuilder_2026-08-14_1432_v1.html \
         doc/qmsWrapper_FormBuilder_2026-08-14_1432_v1.pdf
 ```
 
