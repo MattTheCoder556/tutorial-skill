@@ -15,6 +15,7 @@ mean rather than picking the first.
 
 | Module | Prefix | Filename token |
 |---|---|---|
+| AI Activity Log | `AILOG` | `AIActivityLog` |
 | AI Agent Studio (Backend, feature-flagged) | `AISTUDIO` | `AIAgentStudioBackend` |
 | Approvals (Global) | `APPR` | `Approvals` |
 | Audit Trail | `AUDIT` | `AuditTrail` |
@@ -49,6 +50,7 @@ mean rather than picking the first.
 | Process Builder | `PROC` | `ProcessBuilder` |
 | Project Administration | `PADM` | `ProjectAdministration` |
 | Projects | `PROJ` | `Projects` |
+| QMS Logs | `QMSLOG` | `QMSLogs` |
 | QMS Manual | `MAN` | `QMSManual` |
 | Record Retention | `RET` | `RecordRetention` |
 | Reports | `RPT` | `Reports` |
