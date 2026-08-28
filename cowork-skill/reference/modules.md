@@ -29,8 +29,8 @@ mean rather than picking the first.
 | Dashboard | `DASH` | `Dashboard` |
 | Data Recovery Console (Backend) | `RECOV` | `DataRecoveryConsoleBackend` |
 | Desktop App | `DESKTOP` | `DesktopApp` |
-| EUDAMED | `EUDA` | `EUDAMED` |
 | Entity Pickers (Backend) | `PICK` | `EntityPickersBackend` |
+| EUDAMED | `EUDA` | `EUDAMED` |
 | Feedback | `FDBK` | `Feedback` |
 | Form Builder | `FORM` | `FormBuilder` |
 | Gap Analysis | `GAP` | `GapAnalysis` |
@@ -56,6 +56,7 @@ mean rather than picking the first.
 | Reports | `RPT` | `Reports` |
 | Risk Management | `RISK` | `RiskManagement` |
 | Settings & Administration (Org-Wide) | `SET` | `SettingsAdministration` |
+| Sort Log | `SORT` | `SortLog` |
 | Start Launcher | `START` | `StartLauncher` |
 | Storage / Document Management | `STOR` | `StorageDocumentManagement` |
 | Stuck Work Rescue Console (Backend) | `STUCK` | `StuckWorkRescueConsoleBackend` |
@@ -71,8 +72,8 @@ mean rather than picking the first.
 | User Deletion Wizard | `UDEL` | `UserDeletionWizard` |
 | Users (Backend) | `USR` | `UsersBackend` |
 | Vigilance | `VIG` | `Vigilance` |
+| Wrapper Mapper | `WMAP` | `WrapperMapper` |
 | WrapperApp Releases (Backend) | `REL` | `WrapperAppReleasesBackend` |
-
 ## Renamed modules
 
 These were called something else until 2026-08-10. The old names are dead — the
