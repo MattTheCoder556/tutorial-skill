@@ -56,9 +56,42 @@ If what is actually wanted is a validation pass — "can users do this unaided?"
 — that is `/howto`, and this skill is the wrong one. Say so rather than
 producing a customer document with checkboxes bolted on.
 
-## 1. Gather the source
+## 1. Settle the tier, then gather the source
 
-In order of preference:
+**The tier is the first question, before the source and before a single screen
+is opened.** A module is documented at one entitlement tier, and that tier
+decides which account captures it:
+
+> **Which tier is this module documented at?**
+> **1** Foundation · **2** Control · **3** Vigilance · **?** not sure
+
+**Ask for the tier, never for the account.** The tier is what the document has
+to state (§3, *Before you start*) and what a reader checks their own plan
+against; the account is only how you get a screen to photograph. Someone who
+knows a module gates at Control may not know which login that is, and logins are
+recreated far more often than tiers are renumbered — so the mapping lives in
+`reference/accounts.md`, not in the question put to the user.
+
+**Never guess the tier.** A guessed one is the failure that poisons the whole
+document: prose promising Foundation over screenshots full of Vigilance chrome
+the reader will never find. If the answer is `?`, settle it in this order before
+shooting —
+
+1. the tiers workbook, *Tier basis (entitlement gate)* column;
+2. a route actually probed on the org, which shows what that plan exposes;
+3. a capability gate visible in the product.
+
+If none of the three settles it, say so and hold the document. Do not write
+`Unknown` into a customer guide — that is a `/validation` value, not something a
+reader can act on.
+
+**Where a module gates low but grows higher up**, the answer is the *gate* — the
+lowest tier the module appears at. The main path is written and shot there, and
+the higher-tier capability becomes an optional section (§3), captured on that
+tier's account and labelled with the plan it needs. That is the only case where
+two accounts appear in one document.
+
+Then gather the source, in order of preference:
 
 1. **A session where you drove the UI** — the click paths are known to be real,
    and so is what the screens actually say. This is the best case.
@@ -165,6 +198,15 @@ carelessness and leaks how the company tests. Use plausible sample data with
 neutral names. If you only have test-environment captures, say so and ask
 whether to recapture or hold the document; do not publish them.
 
+**Shoot on the account for the answered tier — never on a higher one.** The
+tier settled in §1 selects the login, and "it was already signed in" is not a
+reason to capture a Foundation guide on the Vigilance account. Higher plans add
+menu entries, buttons and whole modules; every one that reaches a screenshot is
+a promise the reader's plan will not keep, and nothing on the page tells them
+which. The screenshots are what proves the tier the document claims, so they
+have to come from it. If the right account is unavailable, hold the document —
+do not substitute a neighbouring tier.
+
 **Image format is PNG.** Do not offer this as a choice — it is settled:
 
 - lossless text, so small labels and thin borders survive; JPEG puts halos on
@@ -194,9 +236,11 @@ that is not on screen.
   someone would reach for it. A tester knows already; a customer opening the
   guide may not. This is the section `/howto` has no use for and a user guide
   cannot do without.
-- **Before you start** — the role or permission needed, the tier or plan, and
-  anything that must already exist (a project, a template, an approver). If the
-  reader lacks one of these, say what they will see instead and who to ask.
+- **Before you start** — the role or permission needed, the plan the module
+  requires (the tier settled in §1, written the way the product names it —
+  *Foundation*, *Control*, *Vigilance*, not "Tier 2"), and anything that must
+  already exist (a project, a template, an approver). If the reader lacks one of
+  these, say what they will see instead and who to ask.
 - **Terms you will see** — only where the product's vocabulary is not
   self-evident, and only the terms used in this document. Skip the section
   rather than padding it.
@@ -396,6 +440,10 @@ the UI changes, not edited in place.
   `annotate_screenshot.py` on an existing capture, then cropped to the target.
   An unmarked full-window capture is not a figure — it is homework for the
   reader. Check hand-entered boxes by eye before shipping.
+- **The tier is asked, not assumed — and the screenshots come from it.** Ask
+  which tier the module is documented at (§1); resolve the login from
+  `reference/accounts.md`. Never ask the user which account to use, never guess
+  the tier, and never capture on a higher tier than the one the document states.
 - **Screenshots are mandatory**, and from a clean tenant with neutral sample
   data — no DEV banner, no test records, no real colleagues' names. If you
   cannot capture them, say so plainly and ask whether to proceed without.

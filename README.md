@@ -83,8 +83,10 @@ a LaTeX article rather than product documentation.
 
 - **What this is for** — what the module does and when someone reaches for it.
   A tester knows already; a customer opening the guide may not.
-- **Before you start** — role, permission, tier, and anything that must already
-  exist. If the reader lacks one, what they will see instead and who to ask.
+- **Before you start** — role, permission, the plan the module needs (named the
+  way the product names it, *Control*, not "Tier 2"), and anything that must
+  already exist. If the reader lacks one, what they will see instead and who to
+  ask.
 - **Terms you will see** — only where the product's vocabulary is not
   self-evident, and only the terms this document uses.
 - **One section per task**, ordered the way a real user meets them — the common
@@ -94,7 +96,7 @@ a LaTeX article rather than product documentation.
 - **If something does not look right** — symptom, cause, what to do.
 - **Where to go next**, then a footer naming the product version described.
 
-## Four rules the skill will not bend
+## Five rules the skill will not bend
 
 1. **Every navigation path is shown, not just written.** The moment the text
    says *Settings → Approvals*, a screenshot of that trail goes beside it with
@@ -119,6 +121,15 @@ a LaTeX article rather than product documentation.
    tester's copy reaches the reader — not the checkboxes, not the
    defect-confirmation callouts, and not the internal identifiers that tag them
    (validation test IDs like `MAN-03`, defect tickets like `QM-4`).
+5. **It asks which tier, never which account.** A module is documented at one
+   entitlement tier — Foundation, Control or Vigilance — and that answer selects
+   the login the screenshots are taken on, resolved from `reference/accounts.md`.
+   Asking for the account instead would make the writer do the mapping in their
+   head and then throw the answer away: the tier is what the guide has to state
+   and what a reader checks their own plan against, while a login is only how you
+   reach a screen. The skill will not guess the tier, and will not capture on a
+   higher tier than the document claims — higher plans add menu entries the
+   reader's plan will never show, and nothing in a screenshot tells them which.
 
 Image format is **PNG** and is not offered as a choice: lossless text so small
 labels survive, flat UI colour is PNG's best case (it beats JPEG on size *and*

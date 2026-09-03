@@ -6,8 +6,9 @@ description: >-
   their job gets each task done. Same qmsWrapper house style as a validation
   how-to, but written for the customer rather than the tester: no checkboxes,
   no defect confirmations, no feedback to send back. Always includes
-  screenshots; always delivers both a .pdf in the qmsWrapper house style and
-  the .md it was built from.
+  screenshots; always delivers three files — a .pdf in the qmsWrapper house
+  style, the self-contained .html it was printed from, and the .md that
+  produced both.
   Trigger: someone says "tutorial", "/tutorial", "write user documentation",
   "write the manual page for <X>", "document this feature for customers",
   "make an end-user guide", or shares a feature and wants it written up for
@@ -21,16 +22,21 @@ is for, what they need before they start, and how to complete each task without
 anyone sitting next to them.
 
 **Two things are non-negotiable: it always contains screenshots, and it always
-comes out as both a `.pdf` and the `.md` that produced it.**
+comes out as three files — a `.pdf`, the `.html` it was printed from, and the
+`.md` that produced both.**
 
 The PDF is the readable artefact — house style, circulated, published, filed as
-a controlled record. The Markdown is the editable source, and the `screenshots/`
-folder belongs with it. Ship one without the other and the next revision has
-nowhere to start from: nobody edits a PDF, they regenerate it.
+a controlled record. The HTML is the same document for the web: one
+self-contained file with every screenshot inlined, so it can be attached to a
+ticket, dropped into a knowledge base or opened in a browser with no
+`screenshots/` folder beside it. The Markdown is the editable source, and the
+`screenshots/` folder belongs with it. Ship the PDF without the Markdown and the
+next revision has nowhere to start from: nobody edits a PDF, they regenerate it.
 
 ## Not the same document as a validation how-to
 
-A validation how-to (the `howto` skill) does something else: it walks a tester through a matrix,
+A validation how-to (the `howto` skill) does something else: it walks a tester
+through a matrix,
 closes every task with a **Can you do it?** box, warns them that a step is a
 known defect and asks them to confirm it, and treats the friction they report
 as the real output.
@@ -52,9 +58,42 @@ If what is actually wanted is a validation pass — "can users do this unaided?"
 — that is the `howto` skill, and this one is wrong for the job. Say so rather
 than producing a customer document with checkboxes bolted on.
 
-## 1. Gather the source
+## 1. Settle the tier, then gather the source
 
-In order of preference:
+**The tier is the first question, before the source and before a single screen
+is opened.** A module is documented at one entitlement tier, and that tier
+decides which account captures it:
+
+> **Which tier is this module documented at?**
+> **1** Foundation · **2** Control · **3** Vigilance · **?** not sure
+
+**Ask for the tier, never for the account.** The tier is what the document has
+to state (§3, *Before you start*) and what a reader checks their own plan
+against; the account is only how you get a screen to photograph. Someone who
+knows a module gates at Control may not know which login that is, and logins are
+recreated far more often than tiers are renumbered — so the mapping lives in
+`reference/accounts.md`, not in the question put to the user.
+
+**Never guess the tier.** A guessed one is the failure that poisons the whole
+document: prose promising Foundation over screenshots full of Vigilance chrome
+the reader will never find. If the answer is `?`, settle it in this order before
+shooting —
+
+1. the tiers workbook, *Tier basis (entitlement gate)* column;
+2. a route actually probed on the org, which shows what that plan exposes;
+3. a capability gate visible in the product.
+
+If none of the three settles it, say so and hold the document. Do not write
+`Unknown` into a customer guide — that is a value for the validation matrix,
+not something a reader can act on.
+
+**Where a module gates low but grows higher up**, the answer is the *gate* — the
+lowest tier the module appears at. The main path is written and shot there, and
+the higher-tier capability becomes an optional section (§3), captured on that
+tier's account and labelled with the plan it needs. That is the only case where
+two accounts appear in one document.
+
+Then gather the source, in order of preference:
 
 1. **A session where you drove the UI** — the click paths are known to be real,
    and so is what the screens actually say. This is the best case.
@@ -161,6 +200,15 @@ carelessness and leaks how the company tests. Use plausible sample data with
 neutral names. If you only have test-environment captures, say so and ask
 whether to recapture or hold the document; do not publish them.
 
+**Shoot on the account for the answered tier — never on a higher one.** The
+tier settled in §1 selects the login, and "it was already signed in" is not a
+reason to capture a Foundation guide on the Vigilance account. Higher plans add
+menu entries, buttons and whole modules; every one that reaches a screenshot is
+a promise the reader's plan will not keep, and nothing on the page tells them
+which. The screenshots are what proves the tier the document claims, so they
+have to come from it. If the right account is unavailable, hold the document —
+do not substitute a neighbouring tier.
+
 **Image format is PNG.** Do not offer this as a choice — it is settled:
 
 - lossless text, so small labels and thin borders survive; JPEG puts halos on
@@ -189,11 +237,12 @@ that is not on screen.
 - **What this is for** — two or three sentences on what the module does and when
   someone would reach for it. A tester knows already; a customer opening the
   guide may not. This is the section a validation how-to has no use for and a
-  user guide
-  cannot do without.
-- **Before you start** — the role or permission needed, the tier or plan, and
-  anything that must already exist (a project, a template, an approver). If the
-  reader lacks one of these, say what they will see instead and who to ask.
+  user guide cannot do without.
+- **Before you start** — the role or permission needed, the plan the module
+  requires (the tier settled in §1, written the way the product names it —
+  *Foundation*, *Control*, *Vigilance*, not "Tier 2"), and anything that must
+  already exist (a project, a template, an approver). If the reader lacks one of
+  these, say what they will see instead and who to ask.
 - **Terms you will see** — only where the product's vocabulary is not
   self-evident, and only the terms used in this document. Skip the section
   rather than padding it.
@@ -250,29 +299,39 @@ Never quietly ship steps you know fail, and never soften them into vagueness to
 avoid the problem. Behaviour that is merely *surprising* but correct is
 different — that is a §3 troubleshooting entry, not a defect.
 
-## 5. Write it, then produce both files
+## 5. Write it, then produce all three files
 
-**The output is settled: `.pdf` + `.md`. Do not ask which format.** The only
-question is **where it goes** — ask that, and ask it before you write anything.
+**The output is settled: `.pdf` + `.html` + `.md`. Do not ask which format.**
+The only question is **where it goes** — ask that, and ask it before you write
+anything.
 
-Every run produces three things, handed over together:
+Every run leaves four things behind, together in one directory:
 
 | | |
 |---|---|
 | `qmsWrapper_<Module>_<date>_<time>_v<N>.md` | the working source, with relative `screenshots/…` links |
 | `screenshots/` | the annotated PNGs from §2 |
-| `qmsWrapper_<Module>_<date>_<time>_v<N>.pdf` | the house-style PDF, built from that Markdown |
+| `qmsWrapper_<Module>_<date>_<time>_v<N>.html` | the self-contained web version, every image inlined |
+| `qmsWrapper_<Module>_<date>_<time>_v<N>.pdf` | the house-style PDF, printed from that HTML |
 
-Write the Markdown first and build the PDF from it — never the other way round,
-and never author the PDF's HTML by hand. The Markdown is what gets edited when
-the UI changes; the PDF is regenerated. An intermediate `<doc>.html` falls out
-of the build and is scaffolding, not a deliverable — leave it or bin it, but do
-not hand it over as if it were one of the two outputs.
+Write the Markdown first, build the HTML from it, and print the PDF from the
+HTML — never the other way round, and never author the HTML by hand. The
+Markdown is what gets edited when the UI changes; the HTML and the PDF are both
+regenerated from it. All three carry the same stamp.
 
-**If the PDF step fails**, say so plainly, hand over the Markdown and the
-screenshots, and name what is missing (a Chrome on the CDP port, Playwright,
-the logo asset). Do not quietly deliver Markdown alone as though that were the
-whole job.
+**The HTML is a deliverable, not scaffolding.** It is the one file that travels
+on its own: `md_to_qmswrapper_html.py` inlines every screenshot as base64, so it
+opens correctly with no `screenshots/` folder beside it and nothing to break when
+it is forwarded. Hand it over with the other two; do not leave it in a temp
+directory and do not bin it after the PDF is made.
+
+**If the PDF step fails**, say so plainly, hand over the Markdown, the HTML and
+the screenshots, and name what is missing (Playwright, a Chrome on the CDP port,
+the logo asset). The HTML is still a complete, readable document, so say that
+too — but do not present it as though the PDF had been produced.
+
+**If the HTML step fails**, the PDF cannot be built either, since it is printed
+from that HTML. Hand over the Markdown and the screenshots and say what broke.
 
 ### Filename convention
 
@@ -290,10 +349,10 @@ qmsWrapper_FormBuilder_2026-08-14_1432_v1.md
 | `<HHMM>` | 24-hour build time, so two runs on one day never collide. |
 | `v<N>` | Version, from 1, bumped on each redraft of the same document. |
 
-**The `.pdf` and the `.md` share a name**, differing only in extension — they
-are one document in two formats, and a reader holding the PDF has to be able to
-find the source that produced it. Stamp the time once and use it for both; do
-not let the two files pick up timestamps minutes apart.
+**All three files share a name**, differing only in extension — they are one
+document in three formats, and a reader holding the PDF or the HTML has to be
+able to find the source that produced it. Stamp the time once and use it for all
+three; do not let them pick up timestamps minutes apart.
 
 The `screenshots/` folder keeps its plain name beside them — it is shared by
 every version of the document, so it takes no timestamp.
@@ -324,13 +383,16 @@ registry, stop and ask** — never invent a name to get a document out.
 
 ### Other formats
 
-Word and single-file HTML are **extras, produced only if the user explicitly
-asks** — and in addition to the PDF and Markdown, never instead of them:
+Word is an **extra, produced only if the user explicitly asks** — and in
+addition to the three outputs, never instead of them:
 
 ```bash
 pandoc tutorial.md -o tutorial.docx --resource-path=.
-pandoc tutorial.md -o tutorial.html --embed-resources --standalone
 ```
+
+Do not use pandoc to make the HTML. The deliverable HTML is the house-style one
+from `md_to_qmswrapper_html.py` — the same file the PDF is printed from — so
+that the web version and the PDF cannot drift apart.
 
 ### PDF — use the house style, not pandoc's default
 
@@ -347,8 +409,11 @@ python3 scripts/html_to_pdf_chrome.py <out.html> <out.pdf>     # needs a CDP Chr
 ```
 
 The first inlines every image as base64, so the HTML is self-contained and the
-PDF never has missing-image boxes. The second drives Chrome's own print engine,
-which is what produced the reference PDFs.
+PDF never has missing-image boxes — that self-containment is also what makes the
+HTML worth shipping in its own right. The second drives Chrome's own print
+engine, which is what produced the reference PDFs. Write the HTML straight to
+the delivery directory under its house filename, not to a temp path: it is one
+of the three outputs, not a by-product.
 
 **Do not reach for `pandoc --pdf-engine=pdflatex`.** It cannot render `→`, `▾`
 or `⚠` without a per-character `\DeclareUnicodeCharacter` preamble, it needs
@@ -365,19 +430,24 @@ the UI changes, not edited in place.
   and no internal identifiers — no test IDs, defect tickets or matrix
   references. If those are wanted, the validation `howto` skill is the right
   one.
-- **Both files, every time.** A guide is a `.pdf` *and* the `.md` it was built
-  from, delivered together with `screenshots/`. Do not ask which format, do not
-  ship one alone, and do not treat the PDF as the document and the Markdown as a
-  by-product — the Markdown is the source of the next revision.
+- **All three files, every time.** A guide is a `.pdf`, the `.html` it was
+  printed from, *and* the `.md` that produced both, delivered together with
+  `screenshots/`. Do not ask which format, do not ship one alone, and do not
+  treat the PDF as the document and the rest as by-products — the Markdown is the
+  source of the next revision, and the HTML is the copy that travels on its own.
 - **The module name comes from the registry**, character-for-character, in the
   filename and in the prose. Not in `reference/modules.md`? Stop and ask. It is
   **Form Builder** and **Process Builder** — never "Editor".
-- **Filenames follow `qmsWrapper_<Module>_<YYYY-MM-DD>_<HHMM>_v<N>`**, the `.pdf`
-  and `.md` differing only in extension.
+- **Filenames follow `qmsWrapper_<Module>_<YYYY-MM-DD>_<HHMM>_v<N>`**, the
+  `.pdf`, `.html` and `.md` differing only in extension.
 - **Every screenshot is annotated**, by `highlight.py` on a live page or
   `annotate_screenshot.py` on an existing capture, then cropped to the target.
   An unmarked full-window capture is not a figure — it is homework for the
   reader. Check hand-entered boxes by eye before shipping.
+- **The tier is asked, not assumed — and the screenshots come from it.** Ask
+  which tier the module is documented at (§1); resolve the login from
+  `reference/accounts.md`. Never ask the user which account to use, never guess
+  the tier, and never capture on a higher tier than the one the document states.
 - **Screenshots are mandatory**, and from a clean tenant with neutral sample
   data — no DEV banner, no test records, no real colleagues' names. If you
   cannot capture them, say so plainly and ask whether to proceed without.
